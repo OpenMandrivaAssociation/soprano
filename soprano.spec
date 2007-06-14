@@ -1,4 +1,4 @@
-%define date_package 20070605
+%define date_package 20070614
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
