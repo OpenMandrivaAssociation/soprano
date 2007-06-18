@@ -14,7 +14,7 @@ Release: %mkrel 0.%{date_package}
 Epoch: 2
 Group: System/Libraries
 License: LGPL
-URL: http://download.tuxfamily.org/eigen/
+URL: http://api.kde.org/kdesupport-api/kdesupport-apidocs/soprano/html/
 Source:	soprano-%version.%{date_package}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
