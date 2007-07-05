@@ -1,4 +1,6 @@
-%define date_package 20070614
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+%define revision 674845
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -10,12 +12,12 @@
 Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF.
 Version: 3.0
-Release: %mkrel 0.%{date_package}.1
-Epoch: 2
+Release: %mkrel 0.%{revision}.1
+Epoch: 3
 Group: System/Libraries
 License: LGPL
 URL: http://api.kde.org/kdesupport-api/kdesupport-apidocs/soprano/html/
-Source:	soprano-%version.%{date_package}.tar.bz2
+Source:	soprano-%version.%{revision}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
@@ -79,18 +81,10 @@ applications which will use %{name}.
 %setup -q
 
 %build
-mkdir build && cd build
-export QTDIR=%qt4dir
-export PATH=$QTDIR/bin:$PATH
-
-cmake -DCMAKE_INSTALL_PREFIX=%_prefix \
+%cmake_qt4 \
 %if %unstable
-      -DCMAKE_BUILD_TYPE=debugfull \
+      -DCMAKE_BUILD_TYPE=debugfull 
 %endif
-%if "%{_lib}" != "lib"
-      -DLIB_SUFFIX=64 \
-%endif
-        ../
 
 %make
 
