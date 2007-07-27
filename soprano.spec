@@ -1,6 +1,6 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 674845
+%define revision 688549
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -11,7 +11,7 @@
 
 Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF.
-Version: 3.0
+Version: 3.0.0
 Release: %mkrel 0.%{revision}.1
 Epoch: 3
 Group: System/Libraries
