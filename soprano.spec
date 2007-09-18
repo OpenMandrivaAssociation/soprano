@@ -1,6 +1,6 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 688549
+%define revision 714066
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
