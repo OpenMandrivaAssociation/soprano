@@ -12,7 +12,7 @@
 Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF.
 Version: 3.0
-Release: %mkrel 0.%{revision}.2
+Release: %mkrel 0.%{revision}.3
 Epoch: 3
 Group: System/Libraries
 License: LGPL
@@ -63,7 +63,7 @@ Summary: Library.
 Group: Development/C
 Provides: libsoprano-devel
 Requires: %libsoprano
-Obsoletes: %libsoprano-devel < 3:3.0-0.714066.1mdv2008.0
+Obsoletes: %libsoprano-devel < 3:3.0-0.714066.1
 
 %description devel
 This package contains the headers that programmers will need to develop
