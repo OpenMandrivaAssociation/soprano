@@ -13,7 +13,7 @@ Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
 Version: 1.97.0
 %if %branch
-Release: %mkrel 0.%{revision}.4
+Release: %mkrel 0.%{revision}.5
 %else
 Release: %mkrel 1
 %endif
@@ -31,7 +31,7 @@ BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
 BuildRequires: qt4-devel
 BuildRequires: clucene-devel
-#BuildRequires: java-1.7.0-icedtea-devel
+BuildRequires: java-1.7.0-icedtea-devel
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
@@ -55,10 +55,10 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_datadir/soprano/plugins/redlandbackend.desktop
 %_datadir/soprano/rules/nrl.rules
 %_datadir/soprano/rules/rdfs.rules
-#%_datadir/soprano/plugins/sesame2backend.desktop
-#%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
-#%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
-#%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
+%_datadir/soprano/plugins/sesame2backend.desktop
+%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
+%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
+%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
 
 #---------------------------------------------------------------------------------
 
@@ -125,7 +125,7 @@ applications which will use %{name}.
 %build
 %cmake_qt4 \
 %if %unstable
-      -DCMAKE_BUILD_TYPE=debugfull -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include/linux/ -DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/lib/
+      -DCMAKE_BUILD_TYPE=debugfull -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include/ -DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/lib/
 %endif
 
 %make
