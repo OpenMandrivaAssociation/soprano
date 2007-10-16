@@ -13,9 +13,9 @@ Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
 Version: 1.97.0
 %if %branch
-Release: %mkrel 0.%{revision}.3
+Release: %mkrel 0.%{revision}.4
 %else
-Release: %mkrel 0.1
+Release: %mkrel 1
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -30,7 +30,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
 BuildRequires: qt4-devel
-BuildRequires: java-1.7.0-icedtea-devel
+BuildRequires: clucene-devel
+#BuildRequires: java-1.7.0-icedtea-devel
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
@@ -54,10 +55,10 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_datadir/soprano/plugins/redlandbackend.desktop
 %_datadir/soprano/rules/nrl.rules
 %_datadir/soprano/rules/rdfs.rules
-%_datadir/soprano/plugins/sesame2backend.desktop
-%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
-%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
-%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
+#%_datadir/soprano/plugins/sesame2backend.desktop
+#%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
+#%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
+#%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
 
 #---------------------------------------------------------------------------------
 
