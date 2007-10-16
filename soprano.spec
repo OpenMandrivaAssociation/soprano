@@ -1,6 +1,6 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 724490
+%define revision 725573
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -53,11 +53,16 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_datadir/soprano/plugins/redlandbackend.desktop
 %_datadir/soprano/rules/nrl.rules
 %_datadir/soprano/rules/rdfs.rules
+%_datadir/soprano/plugins/sesame2backend.desktop
+%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
+%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
+%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
 
 #---------------------------------------------------------------------------------
 
 %define libsopranomajor 4
 %define libsopranoclientservermajor 1
+%define libsopranoindexmajor 1
 %define libsoprano %mklibname soprano %libsopranomajor
 
 %package -n %libsoprano
@@ -81,6 +86,7 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_libdir/libsoprano.so.%{libsopranomajor}*
 %_libdir/libsopranoclient.so.%{libsopranoclientservermajor}*
 %_libdir/libsopranoserver.so.%{libsopranoclientservermajor}*
+%_libdir/libsopranoindex.so.%{libsopranoindexmajor}*
 %dir %_libdir/soprano
 %_libdir/soprano/*
 
@@ -117,7 +123,7 @@ applications which will use %{name}.
 %build
 %cmake_qt4 \
 %if %unstable
-      -DCMAKE_BUILD_TYPE=debugfull 
+      -DCMAKE_BUILD_TYPE=debugfull -DJAVA_INCLUDE_PATH2=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include/linux/ -DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/lib/
 %endif
 
 %make
