@@ -136,7 +136,7 @@ applications which will use %{name}.
 %cmake_qt4 \
 %if %unstable
 	-DCMAKE_BUILD_TYPE=debugfull \
-	-DJAVA_INCLUDE_PATH=%{icedtea_dir}/include/
+	-DJAVA_INCLUDE_PATH=%{icedtea_dir}/include/ \
 	-DJAVA_JVM_LIBRARY=%{icedtea_dir}/lib/
 %endif
 
