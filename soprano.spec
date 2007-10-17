@@ -9,6 +9,13 @@
 %define dont_strip 1
 %endif
 
+%define icedtea_version 1.7.0.0
+%ifarch x86_64
+%define icedtea_dir /usr/lib/jvm/java-1.7.0-icedtea-%{icedtea_version}.x86_64
+%else
+%define icedtea_dir /usr/lib/jvm/java-1.7.0-icedtea-%{icedtea_version}
+%endif
+
 Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
 Version: 1.97.0
@@ -31,7 +38,7 @@ BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
 BuildRequires: qt4-devel
 BuildRequires: clucene-devel
-BuildRequires: java-1.7.0-icedtea-devel
+BuildRequires: java-1.7.0-icedtea-devel = %{icedtea_version}
 BuildRequires: doxygen
 
 %description
@@ -128,7 +135,9 @@ applications which will use %{name}.
 %build
 %cmake_qt4 \
 %if %unstable
-      -DCMAKE_BUILD_TYPE=debugfull -DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include/ -DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/lib/
+	-DCMAKE_BUILD_TYPE=debugfull \
+	-DJAVA_INCLUDE_PATH=%{icedtea_dir}/include/
+	-DJAVA_JVM_LIBRARY=%{icedtea_dir}/lib/
 %endif
 
 %make
