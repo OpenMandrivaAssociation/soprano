@@ -15,7 +15,7 @@ Version: 1.97.0
 %if %branch
 Release: %mkrel 0.%{revision}.5
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -72,8 +72,6 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 Summary:    Library for %name
 Group:      Development/C
 Requires:   %name
-# fwang: because in such release, it names as libfoo3, but it contains libfoo4
-Conflicts:  %{mklibname soprano 3} = 4:1.97.0-%{mkrel -c 724490 1}
 
 %description -n %libsoprano
 Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
