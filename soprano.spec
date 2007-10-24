@@ -72,6 +72,7 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 Summary:    Library for %name
 Group:      Development/C
 Requires:   %name
+Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsoprano
 Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
