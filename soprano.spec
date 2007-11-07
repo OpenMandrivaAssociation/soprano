@@ -1,6 +1,6 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 725573
+%define revision 733572
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -11,7 +11,7 @@
 
 Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
-Version: 1.97.0
+Version: 1.97.1
 %if %branch
 Release: %mkrel 0.%{revision}.6
 %else
@@ -57,7 +57,7 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_datadir/soprano/rules/nrl.rules
 %_datadir/soprano/rules/rdfs.rules
 %_datadir/soprano/plugins/sesame2backend.desktop
-%_datadir/soprano/sesame2/openrdf-sesame-2.0-beta5-onejar.jar
+%_datadir/soprano/sesame2/openrdf-sesame-2.0-*-onejar.jar
 %_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
 %_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
 
