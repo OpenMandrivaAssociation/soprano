@@ -13,7 +13,7 @@ Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
 Version: 1.97.1
 %if %branch
-Release: %mkrel 0.%{revision}.6
+Release: %mkrel 0.%{revision}.7
 %else
 Release: %mkrel 2
 %endif
@@ -26,6 +26,7 @@ Source: soprano-%version.%{revision}.tar.bz2
 %else
 Source: soprano-%version.tar.bz2
 %endif
+Patch0:        soprano-1.97.1-fix-vesion.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
@@ -124,6 +125,7 @@ applications which will use %{name}.
 %setup -q -n %name-%version
 %endif
 
+%patch0 -p0
 %build
 %cmake_qt4 \
 %if %unstable
