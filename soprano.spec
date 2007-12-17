@@ -30,7 +30,6 @@ Source: soprano-%version.%{revision}.tar.bz2
 Source: soprano-%version.tar.bz2
 %endif
 Patch0:        soprano-1.97.1-fix-vesion.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
 BuildRequires: qt4-devel
