@@ -16,7 +16,7 @@ Name: soprano
 Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
 Version: 2.0.0
 %if %branch
-Release: %mkrel 0.%{revision}.1
+Release: %mkrel 0.%{revision}.2
 %else
 Release: %mkrel 1
 %endif
@@ -73,8 +73,6 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 #---------------------------------------------------------------------------------
 
 %define libsopranomajor 4
-%define libsopranoclientservermajor 1
-%define libsopranoindexmajor 1
 %define libsoprano %mklibname soprano %libsopranomajor
 
 %package -n %libsoprano
@@ -97,11 +95,83 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %files -n %libsoprano
 %defattr(-,root,root)
 %_libdir/libsoprano.so.%{libsopranomajor}*
-%_libdir/libsopranoclient.so.%{libsopranoclientservermajor}*
-%_libdir/libsopranoserver.so.%{libsopranoclientservermajor}*
-%_libdir/libsopranoindex.so.%{libsopranoindexmajor}*
 %dir %_libdir/soprano
 %_libdir/soprano/*
+
+#---------------------------------------------------------------------------------
+
+%define libsopranoclient %mklibname sopranoclient 1
+
+%package -n %libsopranoclient
+Summary: Library for %name
+Group: Development/C
+Requires: %name
+Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
+
+%description -n %libsopranoclient
+Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
+It has a modular structure which allows to replace the actual RDF storage implementation used. 
+Currently two implementations are working. 
+The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
+The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
+NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+
+%post -n %libsopranoclient -p /sbin/ldconfig
+%postun -n %libsopranoclient -p /sbin/ldconfig
+
+%files -n %libsopranoclient
+%defattr(-,root,root)
+%_libdir/libsopranoclient.so.*
+
+#---------------------------------------------------------------------------------
+
+%define libsopranoserver %mklibname sopranoserver 1
+
+%package -n %libsopranoserver
+Summary: Library for %name
+Group: Development/C
+Requires: %name
+Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
+
+%description -n %libsopranoserver
+Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
+It has a modular structure which allows to replace the actual RDF storage implementation used. 
+Currently two implementations are working. 
+The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
+The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
+NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+
+%post -n %libsopranoserver -p /sbin/ldconfig
+%postun -n %libsopranoserver -p /sbin/ldconfig
+
+%files -n %libsopranoserver
+%defattr(-,root,root)
+%_libdir/libsopranoserver.so.*
+
+#---------------------------------------------------------------------------------
+
+%define libsopranoindex %mklibname sopranoindex 1
+
+%package -n %libsopranoindex
+Summary: Library for %name
+Group: Development/C
+Requires: %name
+Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
+
+%description -n %libsopranoindex
+Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
+It has a modular structure which allows to replace the actual RDF storage implementation used. 
+Currently two implementations are working. 
+The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
+The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
+NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+
+%post -n %libsopranoindex -p /sbin/ldconfig
+%postun -n %libsopranoindex -p /sbin/ldconfig
+
+%files -n %libsopranoindex
+%defattr(-,root,root)
+%_libdir/libsopranoindex.so.*
 
 #---------------------------------------------------------------------------------
 
@@ -111,6 +181,10 @@ Group: Development/C
 Provides: libsoprano-devel
 Requires: %libsoprano = %{epoch}:%version-%release
 Obsoletes: %libsoprano-devel < 3:3.0-0.714066.1
+Requires: %libsoprano = %{epoch}:%version-%release
+Requires: %libsopranoclient = %{epoch}:%version-%release
+Requires: %libsopranoserver = %{epoch}:%version-%release
+Requires: %libsopranoindex = %{epoch}:%version-%release
 
 %description devel
 This package contains the headers that programmers will need to develop
@@ -124,6 +198,7 @@ applications which will use %{name}.
 %_includedir/Soprano/*
 %_libdir/pkgconfig/soprano.pc
 %_libdir/*.so
+
 #---------------------------------------------------------------------------------
 
 %prep
