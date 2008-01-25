@@ -65,7 +65,8 @@ NEPOMUK RDF triple service, thus providing a nice interface for applications not
 %_datadir/soprano/rules/rdfs.rules
 %if %with_java
 %_datadir/soprano/plugins/sesame2backend.desktop
-%_datadir/soprano/sesame2/openrdf-sesame-2.0-*-onejar.jar
+# Fix by finding the missing buildrequire
+#%_datadir/soprano/sesame2/openrdf-sesame-2.0-*-onejar.jar
 %_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
 %_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
 %_datadir/soprano/sesame2/SopranoSesame2Wrapper.class
