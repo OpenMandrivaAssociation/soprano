@@ -40,12 +40,14 @@ BuildRequires: java-1.7.0-icedtea-devel
 BuildRequires: doxygen
 
 %description
-Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
-It has a modular structure which allows to replace the actual RDF storage implementation used. 
-Currently two implementations are working. 
-The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
-The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
-NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
 
 %files
 %defattr(-,root,root)
@@ -85,12 +87,14 @@ Requires:   %name
 Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsoprano
-Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
-It has a modular structure which allows to replace the actual RDF storage implementation used. 
-Currently two implementations are working. 
-The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
-The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
-NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
 
 %post -n %libsoprano -p /sbin/ldconfig
 %postun -n %libsoprano -p /sbin/ldconfig
@@ -112,12 +116,14 @@ Requires: %name
 Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoclient
-Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
-It has a modular structure which allows to replace the actual RDF storage implementation used. 
-Currently two implementations are working. 
-The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
-The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
-NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
 
 %post -n %libsopranoclient -p /sbin/ldconfig
 %postun -n %libsopranoclient -p /sbin/ldconfig
@@ -137,12 +143,14 @@ Requires: %name
 Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoserver
-Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
-It has a modular structure which allows to replace the actual RDF storage implementation used. 
-Currently two implementations are working. 
-The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
-The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
-NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
 
 %post -n %libsopranoserver -p /sbin/ldconfig
 %postun -n %libsopranoserver -p /sbin/ldconfig
@@ -162,12 +170,14 @@ Requires: %name
 Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoindex
-Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF storage solutions. 
-It has a modular structure which allows to replace the actual RDF storage implementation used. 
-Currently two implementations are working. 
-The first and most important backend used in Soprano is based on librdf, the Redland RDF Application Framework.
-The second backend is the more interesting one as it uses the NEPOMUK-KDE backbone library to connect to a 
-NEPOMUK RDF triple service, thus providing a nice interface for applications not aware of Nepomuk services.
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
 
 %post -n %libsopranoindex -p /sbin/ldconfig
 %postun -n %libsopranoindex -p /sbin/ldconfig
