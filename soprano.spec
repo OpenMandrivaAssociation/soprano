@@ -13,7 +13,7 @@
 %endif
 
 Name: soprano
-Summary: Soprano (formally known as QRDF) is a library which provides a nice QT interface to RDF
+Summary: Library which provides a nice QT interface to RDF
 Version: 2.0.0
 %if %branch
 Release: %mkrel 0.%{revision}.3
