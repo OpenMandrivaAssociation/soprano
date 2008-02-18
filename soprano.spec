@@ -18,7 +18,7 @@ Version: 2.0.0
 %if %branch
 Release: %mkrel 0.%{revision}.3
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 %endif
 Epoch: 4
 Group: System/Libraries
