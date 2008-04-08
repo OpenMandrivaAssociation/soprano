@@ -1,6 +1,6 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 777761
+%define revision 794020
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -14,7 +14,7 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.0.2
+Version: 2.0.97
 %if %branch
 Release: %mkrel 0.%{revision}.1
 %else
@@ -53,27 +53,14 @@ applications not aware of Nepomuk services.
 %defattr(-,root,root)
 %_bindir/sopranocmd
 %_bindir/sopranod
+%_bindir/onto2vocabularyclass
 %_datadir/dbus-1/interfaces/org.soprano.Model.xml
 %_datadir/dbus-1/interfaces/org.soprano.NodeIterator.xml
 %_datadir/dbus-1/interfaces/org.soprano.QueryResultIterator.xml
 %_datadir/dbus-1/interfaces/org.soprano.Server.xml
 %_datadir/dbus-1/interfaces/org.soprano.StatementIterator.xml
-%_datadir/soprano/plugins/raptorparser.desktop
-%_datadir/soprano/plugins/raptorserializer.desktop
-%_datadir/soprano/plugins/redlandbackend.desktop
-%_datadir/soprano/plugins/nquadparser.desktop
-%_datadir/soprano/plugins/nquadserializer.desktop
-%_datadir/soprano/rules/nrl.rules
-%_datadir/soprano/rules/rdfs.rules
-%if %with_java
-%_datadir/soprano/plugins/sesame2backend.desktop
-# Fix by finding the missing buildrequire
-#%_datadir/soprano/sesame2/openrdf-sesame-2.0-*-onejar.jar
-%_datadir/soprano/sesame2/slf4j-api-1.4.2.jar
-%_datadir/soprano/sesame2/slf4j-simple-1.4.2.jar
-%_datadir/soprano/sesame2/SopranoSesame2Wrapper.class
-%_datadir/soprano/sesame2/openrdf-sesame-2.0-onejar.jar
-%endif
+%dir %_datadir/soprano/
+%_datadir/soprano/*
 
 #---------------------------------------------------------------------------------
 
