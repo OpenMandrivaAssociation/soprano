@@ -32,7 +32,7 @@ Source: soprano-%version.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
-BuildRequires: qt4-devel
+BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel
 %if %with_java
 BuildRequires: java-1.7.0-icedtea-devel
