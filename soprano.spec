@@ -16,7 +16,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.0.99
 %if %branch
-Release: %mkrel 0.%{revision}.1
+Release: %mkrel 0.%{revision}.2
 %else
 Release: %mkrel 1
 %endif
