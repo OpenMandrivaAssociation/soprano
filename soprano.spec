@@ -5,7 +5,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define with_java 1
+%define with_java 0
 %{?_with_java: %{expand: %%global with_java 1}}
 
 %if %{unstable}
@@ -16,7 +16,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.0.99
 %if %branch
-Release: %mkrel 0.%{revision}.2
+Release: %mkrel 0.%{revision}.3
 %else
 Release: %mkrel 1
 %endif
