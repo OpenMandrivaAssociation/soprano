@@ -16,7 +16,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.0.99
 %if %branch
-Release: %mkrel 0.%{revision}.3
+Release: %mkrel 0.%{revision}.4
 %else
 Release: %mkrel 1
 %endif
@@ -54,11 +54,6 @@ applications not aware of Nepomuk services.
 %_bindir/sopranocmd
 %_bindir/sopranod
 %_bindir/onto2vocabularyclass
-%_datadir/dbus-1/interfaces/org.soprano.Model.xml
-%_datadir/dbus-1/interfaces/org.soprano.NodeIterator.xml
-%_datadir/dbus-1/interfaces/org.soprano.QueryResultIterator.xml
-%_datadir/dbus-1/interfaces/org.soprano.Server.xml
-%_datadir/dbus-1/interfaces/org.soprano.StatementIterator.xml
 %dir %_datadir/soprano/
 %_datadir/soprano/*
 
@@ -214,6 +209,7 @@ applications which will use %{name}.
 %_includedir/Soprano/*
 %_libdir/pkgconfig/soprano.pc
 %_libdir/*.so
+%_kde_datadir/dbus-1/interfaces/*
 
 #---------------------------------------------------------------------------------
 
