@@ -225,8 +225,8 @@ applications which will use %{name}.
 %if %unstable
 	-DCMAKE_BUILD_TYPE=debugfull \
 %if %with_java
-	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0-openjdk/include/ \
-	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0-openjdk/include/
+	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0/include/ \
+	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0/include/
 %endif
 %endif
 
