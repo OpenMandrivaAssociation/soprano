@@ -5,7 +5,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define with_java 0
+%define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
 
 %if %{unstable}
@@ -35,7 +35,7 @@ BuildRequires: redland-devel
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel
 %if %with_java
-BuildRequires: java-1.7.0-icedtea-devel
+BuildRequires: java-1.6.0-openjdk-devel
 %endif
 BuildRequires: doxygen
 
@@ -225,8 +225,8 @@ applications which will use %{name}.
 %if %unstable
 	-DCMAKE_BUILD_TYPE=debugfull \
 %if %with_java
-	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-icedtea/include/ \
-	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-icedtea/lib/
+	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0-openjdk/include/ \
+	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0-openjdk/include/
 %endif
 %endif
 
