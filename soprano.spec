@@ -34,6 +34,7 @@ BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel
+BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-1.6.0-openjdk-devel
 %endif
