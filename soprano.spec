@@ -229,8 +229,8 @@ applications which will use %{name}.
 %cmake_qt4 \
 %if %with_java
 %if %mdkversion <= 200810
-	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0 \
-	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0
+	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include \
+	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include
 %else
 	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0/include/ \
 	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0/include/
