@@ -36,7 +36,11 @@ BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel
 BuildRequires: kde4-macros
 %if %with_java
+%if %mdkversion <= 200810
+BuildRequires: java-1.7.0-icedtea-devel
+%else
 BuildRequires: java-1.6.0-openjdk-devel
+%endif
 %endif
 BuildRequires: doxygen
 
