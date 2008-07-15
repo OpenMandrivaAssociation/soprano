@@ -227,9 +227,11 @@ applications which will use %{name}.
 
 %build
 %cmake_qt4 \
-%if %unstable
-	-DCMAKE_BUILD_TYPE=debugfull \
 %if %with_java
+%if %mdkversion <= 200810
+	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0 \
+	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0
+%else
 	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0/include/ \
 	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0/include/
 %endif
