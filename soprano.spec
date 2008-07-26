@@ -5,7 +5,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define with_java 0
+%define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
 
 %if %{unstable}
@@ -16,7 +16,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.0.99
 %if %branch
-Release: %mkrel 0.%{revision}.2
+Release: %mkrel 0.%{revision}.3
 %else
 Release: %mkrel 1
 %endif
@@ -226,17 +226,14 @@ applications which will use %{name}.
 %endif
 
 %build
-%cmake_qt4 \
 %if %with_java
 %if %mdkversion <= 200810
-	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include \
-	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0/include
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0
 %else
-	-DJAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.6.0/include/ \
-	-DJAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.6.0/include/
+export JAVA_HOME=/usr/lib/jvm/java-1.6.0
 %endif
 %endif
-
+%cmake_qt4
 %make
 
 
