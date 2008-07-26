@@ -22,7 +22,7 @@ Release: %mkrel 1
 %endif
 Epoch: 4
 Group: System/Libraries
-License: LGPL
+License: LGPLv2+
 URL: http://soprano.sourceforge.net
 %if %branch
 Source: soprano-%version.%{revision}.tar.bz2
