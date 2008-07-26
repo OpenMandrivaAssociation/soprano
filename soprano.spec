@@ -1,4 +1,4 @@
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 %define revision 830350
 
@@ -14,7 +14,7 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.0.99
+Version: 2.1
 %if %branch
 Release: %mkrel 0.%{revision}.3
 %else
@@ -219,7 +219,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%if ! %branch
+%if %branch
 %setup -q -n %name
 %else
 %setup -q -n %name-%version
