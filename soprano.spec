@@ -23,7 +23,7 @@ Release: %mkrel 1
 Epoch: 4
 Group: System/Libraries
 License: LGPL
-URL: http://api.kde.org/kdesupport-api/kdesupport-apidocs/soprano/html/
+URL: http://soprano.sourceforge.net
 %if %branch
 Source: soprano-%version.%{revision}.tar.bz2
 %else
@@ -239,7 +239,7 @@ export JAVA_HOME=/usr/lib/jvm/java-1.6.0
 
 %install
 rm -rf %buildroot
-cd build && make DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean 
 rm -rf %buildroot
