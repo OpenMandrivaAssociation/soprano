@@ -18,7 +18,7 @@ Version: 2.1
 %if %branch
 Release: %mkrel 0.%{revision}.3
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -36,11 +36,7 @@ BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel
 BuildRequires: kde4-macros
 %if %with_java
-%if %mdkversion <= 200810
-BuildRequires: java-1.7.0-icedtea-devel
-%else
-BuildRequires: java-1.6.0-openjdk-devel
-%endif
+BuildRequires: java-rpmbuild
 %endif
 BuildRequires: doxygen
 
@@ -227,11 +223,7 @@ applications which will use %{name}.
 
 %build
 %if %with_java
-%if %mdkversion <= 200810
-export JAVA_HOME=/usr/lib/jvm/java-1.7.0-icedtea-1.7.0.0
-%else
-export JAVA_HOME=/usr/lib/jvm/java-1.6.0
-%endif
+export JAVA_HOME=%{java_home}
 %endif
 %cmake_qt4
 %make
