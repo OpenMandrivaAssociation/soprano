@@ -18,7 +18,7 @@ Version: 2.1.1
 %if %branch
 Release: %mkrel 0.%{revision}.3
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -29,6 +29,7 @@ Source: soprano-%version.%{revision}.tar.bz2
 %else
 Source: soprano-%version.tar.bz2
 %endif
+Patch0:        soprano-2.1.1-trunk.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel
@@ -220,6 +221,7 @@ applications which will use %{name}.
 %else
 %setup -q -n %name-%version
 %endif
+%patch0 -p0
 
 %build
 %if %with_java
