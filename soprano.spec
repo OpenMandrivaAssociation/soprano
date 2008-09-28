@@ -12,13 +12,18 @@
 %define dont_strip 1
 %endif
 
+%if %{with_java}
+# Do not require java stuff just because we have a java backend
+%define _requires_exceptions libjvm\.so
+%endif
+
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.1.1
 %if %branch
 Release: %mkrel 0.%{revision}.3
 %else
-Release: %mkrel 2
+Release: %mkrel 3
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -38,6 +43,7 @@ BuildRequires: clucene-devel
 BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
+BuildRequires: chrpath
 %endif
 BuildRequires: doxygen
 
@@ -234,6 +240,14 @@ export JAVA_HOME=%{java_home}
 %install
 rm -rf %buildroot
 %makeinstall_std -C build
+
+%if %with_java
+# Load libjvm.so from the JRE directory instead of SDK directory. This
+# works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
+# directories. Maybe they should be an alternative pointing to libjvm.so.
+old_rpath=$(chrpath -l %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so | cut -d= -f2)
+chrpath -r %{_jvmdir}${old_rpath#%{java_home}} %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
+%endif
 
 %clean 
 rm -rf %buildroot
