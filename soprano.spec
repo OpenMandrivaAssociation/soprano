@@ -244,7 +244,7 @@ rm -rf %buildroot
 %if %with_java
 # Load libjvm.so from the JRE directory instead of SDK directory. This
 # works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
-# directories. Maybe they should be an alternative pointing to libjvm.so.
+# directories. Maybe there should be an alternative pointing to libjvm.so.
 old_rpath=$(chrpath -l %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so | cut -d= -f2)
 chrpath -r %{_jvmdir}${old_rpath#%{java_home}} %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
 %endif
