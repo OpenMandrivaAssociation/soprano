@@ -1,6 +1,6 @@
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 830350
+%define revision 872741
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -19,11 +19,11 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.1.1
+Version: 2.1.63
 %if %branch
-Release: %mkrel 0.%{revision}.3
+Release: %mkrel 0.%{revision}.1
 %else
-Release: %mkrel 3
+Release: %mkrel 1
 %endif
 Epoch: 4
 Group: System/Libraries
@@ -34,12 +34,11 @@ Source: soprano-%version.%{revision}.tar.bz2
 %else
 Source: soprano-%version.tar.bz2
 %endif
-Patch0:        soprano-2.1.1-trunk.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
-BuildRequires: redland-devel
+BuildRequires: redland-devel >= 1.0.6
 BuildRequires: qt4-devel >= 4.4.0
-BuildRequires: clucene-devel
+BuildRequires: clucene-devel >= 0.9.19
 BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
@@ -227,7 +226,6 @@ applications which will use %{name}.
 %else
 %setup -q -n %name-%version
 %endif
-%patch0 -p0
 
 %build
 %if %with_java
