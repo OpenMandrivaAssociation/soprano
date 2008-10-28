@@ -1,6 +1,7 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 872741
+
+%define revision 876764
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -19,7 +20,7 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.1.63
+Version: 2.1.64
 %if %branch
 Release: %mkrel 0.%{revision}.1
 %else
