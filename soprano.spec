@@ -1,17 +1,10 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
-%define revision 895232
-
-%define unstable 1
-%{?_unstable: %{expand: %%global unstable 1}}
+%define revision 912017
 
 %define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
-
-%if %{unstable}
-%define dont_strip 1
-%endif
 
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
@@ -222,11 +215,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%if %branch
-%setup -q -n %name
-%else
 %setup -q -n %name-%version
-%endif
 
 %build
 %if %with_java
