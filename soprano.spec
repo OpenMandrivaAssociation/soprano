@@ -234,7 +234,8 @@ rm -rf %buildroot
 # works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
 # directories. Maybe there should be an alternative pointing to libjvm.so.
 old_rpath=$(chrpath -l %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so | cut -d= -f2)
-chrpath -r %{_jvmdir}${old_rpath#%{java_home}} %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
+new_rpath=$(echo "$old_rpath" | sed "s,%{java_home},%{_jvmdir},")
+chrpath -r "$new_rpath" %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
 %endif
 
 %clean 
