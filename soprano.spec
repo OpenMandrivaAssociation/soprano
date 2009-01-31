@@ -28,6 +28,8 @@ Source: soprano-%version.%{revision}.tar.bz2
 %else
 Source: soprano-%version.tar.bz2
 %endif
+# Drop wrong unneeded rpath=%{_libdir}
+Patch0: soprano-drop-rpath.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.4.5
 BuildRequires: redland-devel >= 1.0.6
@@ -216,6 +218,7 @@ applications which will use %{name}.
 
 %prep
 %setup -q -n %name-%version
+%patch0 -p1
 
 %build
 %if %with_java
