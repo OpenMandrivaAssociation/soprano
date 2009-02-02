@@ -31,7 +31,7 @@ Source: soprano-%version.tar.bz2
 # Drop wrong unneeded rpath=%{_libdir}
 Patch0: soprano-drop-rpath.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: cmake >= 2.4.5
+BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: clucene-devel >= 0.9.19
