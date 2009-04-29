@@ -1,7 +1,7 @@
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
-%define revision 0
+%define revision 959000
 
 %define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
@@ -13,7 +13,7 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.2.1
+Version: 2.2.64
 %if %branch
 Release: %mkrel 0.%{revision}.1
 %else
@@ -217,7 +217,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name
 %patch0 -p1
 
 %build
