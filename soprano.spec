@@ -73,6 +73,7 @@ applications not aware of Nepomuk services.
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
 Requires:   %name = %epoch:%version-%release
+Conflicts:  %name < 4:2.2.64-0.959000.2
 Obsoletes:  %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description plugin-sesame2
