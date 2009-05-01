@@ -57,8 +57,32 @@ applications not aware of Nepomuk services.
 %_bindir/sopranocmd
 %_bindir/sopranod
 %_bindir/onto2vocabularyclass
-%dir %_datadir/soprano/
-%_datadir/soprano/*
+%dir %_datadir/soprano
+%dir %_datadir/soprano/plugins
+%_datadir/soprano/plugins/nquadparser.desktop
+%_datadir/soprano/plugins/nquadserializer.desktop
+%_datadir/soprano/plugins/raptorparser.desktop
+%_datadir/soprano/plugins/raptorserializer.desktop
+%_datadir/soprano/plugins/redlandbackend.desktop
+%_datadir/soprano/rules
+
+#---------------------------------------------------------------------------------
+
+%if %with_java
+%package    plugin-sesame2
+Summary:    Sesame2 soprano plugin
+Group:      System/Libraries
+Requires:   %name = %epoch:%version-%release
+Obsoletes:  %{_lib}soprano3 < 4:1.97.0-0.725573.5
+
+%description plugin-sesame2
+This package provide the sesame2 plugin for soprano.
+
+%files plugin-sesame2
+%defattr(-,root,root)
+%_datadir/soprano/plugins/sesame2backend.desktop
+%_datadir/soprano/sesame2
+%endif
 
 #---------------------------------------------------------------------------------
 
