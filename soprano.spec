@@ -81,13 +81,6 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%if %mdkversion < 200900
-%post -n %libsoprano -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libsoprano -p /sbin/ldconfig
-%endif
-
 %files -n %libsoprano
 %defattr(-,root,root)
 %_libdir/libsoprano.so.%{libsopranomajor}*
@@ -114,13 +107,6 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%if %mdkversion < 200900
-%post -n %libsopranoclient -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libsopranoclient -p /sbin/ldconfig
-%endif
-
 %files -n %libsopranoclient
 %defattr(-,root,root)
 %_libdir/libsopranoclient.so.*
@@ -145,13 +131,6 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%if %mdkversion < 200900
-%post -n %libsopranoserver -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libsopranoserver -p /sbin/ldconfig
-%endif
-
 %files -n %libsopranoserver
 %defattr(-,root,root)
 %_libdir/libsopranoserver.so.*
@@ -175,13 +154,6 @@ Soprano is based on librdf, the Redland RDF Application Framework.  The second
 backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
-
-%if %mdkversion < 200900
-%post -n %libsopranoindex -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libsopranoindex -p /sbin/ldconfig
-%endif
 
 %files -n %libsopranoindex
 %defattr(-,root,root)
