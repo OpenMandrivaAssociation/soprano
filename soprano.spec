@@ -15,7 +15,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.2.67
 %if %branch
-Release: %mkrel 0.%{revision}.2
+Release: %mkrel 0.%{revision}.3
 %else
 Release: %mkrel 2
 %endif
@@ -187,17 +187,17 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%package devel
-Summary: Library
-Group: Development/C
+%package  devel
+Summary:  Library
+Group:    Development/C
 Provides: libsoprano-devel
 Requires: %libsoprano = %{epoch}:%version-%release
-Obsoletes: %libsoprano-devel < 3:3.0-0.714066.1
+Obsoletes:%libsoprano-devel < 3:3.0-0.714066.1
 Requires: %libsoprano = %{epoch}:%version-%release
 Requires: %libsopranoclient = %{epoch}:%version-%release
 Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
-
+Requires: %name-plugin-sesame2
 %description devel
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
