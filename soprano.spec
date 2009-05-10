@@ -15,7 +15,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.2.67
 %if %branch
-Release: %mkrel 0.%{revision}.1
+Release: %mkrel 0.%{revision}.2
 %else
 Release: %mkrel 2
 %endif
@@ -41,6 +41,7 @@ BuildRequires: java-rpmbuild
 BuildRequires: chrpath
 %endif
 BuildRequires: doxygen
+Requires:      %name-plugin-sesame2
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
