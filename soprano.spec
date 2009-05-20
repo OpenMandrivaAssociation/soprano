@@ -1,7 +1,7 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
-%define revision 964921
+%define revision 970828
 
 %define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
@@ -222,7 +222,7 @@ applications which will use %{name}.
 %if %with_java
 export JAVA_HOME=%{java_home}
 %endif
-%cmake_qt4
+%cmake_qt4 
 %make
 
 
