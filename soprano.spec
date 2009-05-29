@@ -30,6 +30,7 @@ Source: soprano-%version.tar.bz2
 %endif
 # Drop wrong unneeded rpath=%{_libdir}
 Patch0: soprano-drop-rpath.patch
+Patch1: soprano-2.2.67-find-iodbc_config.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -41,6 +42,7 @@ BuildRequires: java-rpmbuild
 BuildRequires: chrpath
 %endif
 BuildRequires: doxygen
+BuildRequires: unixODBC 
 Requires:      %name-plugin-sesame2
 
 %description
@@ -85,6 +87,21 @@ This package provide the sesame2 plugin for soprano.
 %_datadir/soprano/plugins/sesame2backend.desktop
 %_datadir/soprano/sesame2
 %endif
+
+#---------------------------------------------------------------------------------
+
+%package    plugin-virtuoso
+Summary:    Virtuoso soprano plugin
+Group:      System/Libraries
+Requires:   %name = %epoch:%version-%release
+Requires:   virtuoso-opensource
+
+%description plugin-virtuoso
+This package provide the virtuoso plugin for soprano.
+
+%files plugin-virtuoso
+%defattr(-,root,root)
+%_datadir/soprano/plugins/virtuosobackend.desktop
 
 #---------------------------------------------------------------------------------
 
@@ -198,6 +215,8 @@ Requires: %libsopranoclient = %{epoch}:%version-%release
 Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
 Requires: %name-plugin-sesame2
+Requires: %name-plugin-virtuoso
+
 %description devel
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
@@ -217,6 +236,7 @@ applications which will use %{name}.
 %prep
 %setup -q -n %name
 %patch0 -p1
+%patch1 -p0
 
 %build
 %if %with_java
