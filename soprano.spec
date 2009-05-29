@@ -15,7 +15,7 @@ Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.2.67
 %if %branch
-Release: %mkrel 0.%{revision}.1
+Release: %mkrel 0.%{revision}.2
 %else
 Release: %mkrel 2
 %endif
@@ -43,6 +43,7 @@ BuildRequires: chrpath
 %endif
 BuildRequires: doxygen
 BuildRequires: unixODBC 
+BuildRequires: unixODBC-devel
 Requires:      %name-plugin-sesame2
 
 %description
