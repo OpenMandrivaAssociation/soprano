@@ -1,6 +1,3 @@
-%define branch 1
-%{?_branch: %{expand: %%global branch 1}}
-
 %define revision 974203
 
 %define with_java 1
@@ -13,24 +10,13 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.2.67
-%if %branch
-Release: %mkrel 0.%{revision}.2
-%else
-Release: %mkrel 2
-%endif
+Version: 2.2.68
+Release: %mkrel 0.1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-%if %branch
 Source: soprano-%version.%{revision}.tar.bz2
-%else
-Source: soprano-%version.tar.bz2
-%endif
-# Drop wrong unneeded rpath=%{_libdir}
-Patch0: soprano-drop-rpath.patch
-Patch1: soprano-2.2.67-find-iodbc_config.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -42,9 +28,7 @@ BuildRequires: java-rpmbuild
 BuildRequires: chrpath
 %endif
 BuildRequires: doxygen
-BuildRequires: unixODBC 
-BuildRequires: unixODBC-devel
-Requires:      %name-plugin-sesame2
+BuildRequires: iodbc-devel
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -236,14 +220,14 @@ applications which will use %{name}.
 
 %prep
 %setup -q -n %name
-%patch0 -p1
-%patch1 -p0
 
 %build
 %if %with_java
 export JAVA_HOME=%{java_home}
 %endif
+
 %cmake_qt4 
+
 %make
 
 
