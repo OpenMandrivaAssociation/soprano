@@ -1,4 +1,4 @@
-%define revision 974203
+%define revision 983983
 
 %define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
@@ -26,9 +26,13 @@ BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
 BuildRequires: chrpath
+Suggests: soprano-plugin-sesame2
 %endif
 BuildRequires: doxygen
 BuildRequires: iodbc-devel
+Suggests: soprano-plugin-redland
+Suggests: soprano-plugin-virtuoso
+
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -46,12 +50,6 @@ applications not aware of Nepomuk services.
 %_bindir/sopranod
 %_bindir/onto2vocabularyclass
 %dir %_datadir/soprano
-%dir %_datadir/soprano/plugins
-%_datadir/soprano/plugins/nquadparser.desktop
-%_datadir/soprano/plugins/nquadserializer.desktop
-%_datadir/soprano/plugins/raptorparser.desktop
-%_datadir/soprano/plugins/raptorserializer.desktop
-%_datadir/soprano/plugins/redlandbackend.desktop
 %_datadir/soprano/rules
 
 #---------------------------------------------------------------------------------
@@ -60,17 +58,19 @@ applications not aware of Nepomuk services.
 %package    plugin-sesame2
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
-Requires:   %name = %epoch:%version-%release
-Conflicts:  %name < 4:2.2.64-0.959000.2
 Obsoletes:  %{_lib}soprano3 < 4:1.97.0-0.725573.5
+Requires:   soprano-plugin-common
 
 %description plugin-sesame2
 This package provide the sesame2 plugin for soprano.
 
 %files plugin-sesame2
 %defattr(-,root,root)
+%dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/sesame2backend.desktop
 %_datadir/soprano/sesame2
+%dir %_libdir/soprano
+%_libdir/soprano/libsoprano_sesame2backend.so
 %endif
 
 #---------------------------------------------------------------------------------
@@ -78,15 +78,53 @@ This package provide the sesame2 plugin for soprano.
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
 Group:      System/Libraries
-Requires:   %name = %epoch:%version-%release
 Requires:   virtuoso-opensource
+Requires:   soprano-plugin-common
 
 %description plugin-virtuoso
 This package provide the virtuoso plugin for soprano.
 
 %files plugin-virtuoso
 %defattr(-,root,root)
+%dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/virtuosobackend.desktop
+%dir %_libdir/soprano
+%_libdir/soprano/libsoprano_virtuosobackend.so
+
+#---------------------------------------------------------------------------------
+
+%package    plugin-redland
+Summary:    redland soprano plugin
+Group:      System/Libraries
+Requires:   soprano-plugin-common
+
+%description plugin-redland
+This package provide the redland plugin for soprano.
+
+%files plugin-redland
+%defattr(-,root,root)
+%dir %_datadir/soprano/plugins
+%_datadir/soprano/plugins/redlandbackend.desktop
+%dir %_libdir/soprano
+%_libdir/soprano/libsoprano_redlandbackend.so
+
+#---------------------------------------------------------------------------------
+
+%package    plugin-common
+Summary:    Common parsers and serializers
+Group:      System/Libraries
+
+%description plugin-common
+Common parser and serializers
+
+%files plugin-common
+%defattr(-,root,root)
+%dir %_datadir/soprano/plugins
+%_datadir/soprano/plugins/*parser.desktop
+%_datadir/soprano/plugins/*serializer.desktop
+%dir %_libdir/soprano
+%_libdir/soprano/libsoprano_*serializer.so
+%_libdir/soprano/libsoprano_*parser.so
 
 #---------------------------------------------------------------------------------
 
@@ -112,8 +150,6 @@ applications not aware of Nepomuk services.
 %files -n %libsoprano
 %defattr(-,root,root)
 %_libdir/libsoprano.so.%{libsopranomajor}*
-%dir %_libdir/soprano
-%_libdir/soprano/*
 
 #---------------------------------------------------------------------------------
 
@@ -219,7 +255,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
+%setup -q
 
 %build
 %if %with_java
