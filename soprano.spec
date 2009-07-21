@@ -60,6 +60,8 @@ applications not aware of Nepomuk services.
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
 Obsoletes:  %{_lib}soprano3 < 4:1.97.0-0.725573.5
+Obsoletes:  soprano < 4:2.2.69
+Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   soprano-plugin-common
 
 %description plugin-sesame2
@@ -79,6 +81,8 @@ This package provide the sesame2 plugin for soprano.
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
 Group:      System/Libraries
+Obsoletes:  soprano < 4:2.2.69
+Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   virtuoso-opensource
 Requires:   soprano-plugin-common
 
@@ -97,6 +101,8 @@ This package provide the virtuoso plugin for soprano.
 %package    plugin-redland
 Summary:    redland soprano plugin
 Group:      System/Libraries
+Obsoletes:  soprano < 4:2.2.69
+Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   soprano-plugin-common
 
 %description plugin-redland
@@ -114,6 +120,8 @@ This package provide the redland plugin for soprano.
 %package    plugin-common
 Summary:    Common parsers and serializers
 Group:      System/Libraries
+Obsoletes:  soprano < 4:2.2.69
+Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 
 %description plugin-common
 Common parser and serializers
