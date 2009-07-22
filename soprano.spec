@@ -1,7 +1,7 @@
-%define revision 983983
-
 %define with_java 1
 %{?_with_java: %{expand: %%global with_java 1}}
+
+%bcond_with virtuoso 0
 
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
@@ -10,14 +10,13 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.2.69
-Release: %mkrel 3
+Version: 2.3.0
+Release: %mkrel 1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
 Source: soprano-%version.tar.bz2
-Patch0: soprano-2.2.69-use-proper-sql-types.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -30,9 +29,13 @@ BuildRequires: chrpath
 Suggests: soprano-plugin-sesame2
 %endif
 BuildRequires: doxygen
-BuildRequires: iodbc-devel
 Suggests: soprano-plugin-redland
+%if %with virtuoso
+BuildRequires: iodbc-devel
 Suggests: soprano-plugin-virtuoso
+%else 
+Obsoletes: soprano-plugin-virtuoso
+%endif
 
 
 %description
@@ -77,6 +80,7 @@ This package provide the sesame2 plugin for soprano.
 %endif
 
 #---------------------------------------------------------------------------------
+%if %with virtuoso
 
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
@@ -96,6 +100,7 @@ This package provide the virtuoso plugin for soprano.
 %dir %_libdir/soprano
 %_libdir/soprano/libsoprano_virtuosobackend.so
 
+%endif
 #---------------------------------------------------------------------------------
 
 %package    plugin-redland
@@ -244,8 +249,6 @@ Requires: %libsoprano = %{epoch}:%version-%release
 Requires: %libsopranoclient = %{epoch}:%version-%release
 Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
-Requires: %name-plugin-sesame2
-Requires: %name-plugin-virtuoso
 
 %description devel
 This package contains the headers that programmers will need to develop
@@ -266,7 +269,6 @@ applications which will use %{name}.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %if %with_java
