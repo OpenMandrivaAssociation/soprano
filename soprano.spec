@@ -11,7 +11,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.0
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -249,6 +249,11 @@ Requires: %libsoprano = %{epoch}:%version-%release
 Requires: %libsopranoclient = %{epoch}:%version-%release
 Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
+Requires: %{name}-plugin-sesame2
+Requires: %{name}-plugin-redland
+%if %with virtuoso
+Requires: %name-virtuoso
+%endif
 
 %description devel
 This package contains the headers that programmers will need to develop
