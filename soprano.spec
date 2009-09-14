@@ -10,8 +10,8 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.3.0
-Release: %mkrel 2
+Version: 2.3.1
+Release: %mkrel 1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -268,7 +268,7 @@ applications which will use %{name}.
 %_libdir/pkgconfig/soprano.pc
 %_libdir/*.so
 %_datadir/dbus-1/interfaces/*
-%_kde_appsdir/cmake/modules/SopranoAddOntology.cmake
+%_datadir/soprano/cmake
 
 #---------------------------------------------------------------------------------
 
