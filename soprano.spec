@@ -52,7 +52,6 @@ applications not aware of Nepomuk services.
 %defattr(-,root,root)
 %_bindir/sopranocmd
 %_bindir/sopranod
-%_bindir/onto2vocabularyclass
 %dir %_datadir/soprano
 %_datadir/soprano/rules
 
@@ -264,6 +263,7 @@ applications which will use %{name}.
 
 %files devel
 %defattr(-,root,root)
+%_bindir/onto2vocabularyclass
 %dir %_includedir/soprano/
 %_includedir/soprano/*
 %dir %_includedir/Soprano/
