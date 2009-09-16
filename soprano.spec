@@ -11,7 +11,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.1
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -68,7 +68,7 @@ Requires:   soprano-plugin-common
 Requires:   java
 
 %description plugin-sesame2
-This package provide the sesame2 plugin for soprano.
+This package provide the sesame2 java indexer plugin for soprano.
 
 %files plugin-sesame2
 %defattr(-,root,root)
@@ -111,7 +111,7 @@ Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   soprano-plugin-common
 
 %description plugin-redland
-This package provide the redland plugin for soprano.
+This package provide the redland indexer plugin for soprano.
 
 %files plugin-redland
 %defattr(-,root,root)
