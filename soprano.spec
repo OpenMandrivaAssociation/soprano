@@ -11,7 +11,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.1
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -61,9 +61,6 @@ applications not aware of Nepomuk services.
 %package    plugin-sesame2
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
-Obsoletes:  %{_lib}soprano3 < 4:1.97.0-0.725573.5
-Obsoletes:  soprano < 4:2.2.69
-Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   soprano-plugin-common
 Requires:   java
 
@@ -85,8 +82,6 @@ This package provide the sesame2 java indexer plugin for soprano.
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
 Group:      System/Libraries
-Obsoletes:  soprano < 4:2.2.69
-Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   virtuoso-opensource
 Requires:   soprano-plugin-common
 
@@ -106,8 +101,6 @@ This package provide the virtuoso plugin for soprano.
 %package    plugin-redland
 Summary:    redland soprano plugin
 Group:      System/Libraries
-Obsoletes:  soprano < 4:2.2.69
-Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 Requires:   soprano-plugin-common
 
 %description plugin-redland
@@ -125,8 +118,6 @@ This package provide the redland indexer plugin for soprano.
 %package    plugin-common
 Summary:    Common parsers and serializers
 Group:      System/Libraries
-Obsoletes:  soprano < 4:2.2.69
-Obsoletes:  %{_lib}soprano4 < 4:2.2.69
 
 %description plugin-common
 Common parser and serializers
@@ -149,7 +140,6 @@ Common parser and serializers
 Summary:    Library for %name
 Group:      Development/C
 Requires:   %name
-Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsoprano
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -173,7 +163,6 @@ applications not aware of Nepomuk services.
 Summary: Library for %name
 Group: Development/C
 Requires: %name
-Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoclient
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -197,7 +186,6 @@ applications not aware of Nepomuk services.
 Summary: Library for %name
 Group: Development/C
 Requires: %name
-Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoserver
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -221,7 +209,6 @@ applications not aware of Nepomuk services.
 Summary: Library for %name
 Group: Development/C
 Requires: %name
-Obsoletes: %{_lib}soprano3 < 4:1.97.0-0.725573.5
 
 %description -n %libsopranoindex
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -242,7 +229,7 @@ applications not aware of Nepomuk services.
 %package  devel
 Summary:  Library
 Group:    Development/C
-Provides: libsoprano-devel
+Provides: libsoprano-devel = %{epoch}:%version-release
 Requires: %libsoprano = %{epoch}:%version-%release
 Obsoletes:%libsoprano-devel < 3:3.0-0.714066.1
 Requires: %libsoprano = %{epoch}:%version-%release
