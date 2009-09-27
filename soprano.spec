@@ -3,7 +3,7 @@
 %else
 %define with_java 1
 %endif
-?_with_java: %{expand: %%global with_java 1}}
+%{?_with_java: %{expand: %%global with_java 1}}
 
 %bcond_with virtuoso 0
 
