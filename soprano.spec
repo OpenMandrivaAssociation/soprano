@@ -1,5 +1,9 @@
+%ifarch %arm %mips
+%define with_java 0
+%else
 %define with_java 1
-%{?_with_java: %{expand: %%global with_java 1}}
+%endif
+?_with_java: %{expand: %%global with_java 1}}
 
 %bcond_with virtuoso 0
 
@@ -11,7 +15,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.1
-Release: %mkrel 6
+Release: %mkrel 7
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
