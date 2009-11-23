@@ -88,7 +88,7 @@ This package provide the sesame2 java indexer plugin for soprano.
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
 Group:      System/Libraries
-Requires:   virtuoso-opensource
+Requires:   virtuoso-opensource >= 5.0.12
 Requires:   soprano-plugin-common
 
 %description plugin-virtuoso
