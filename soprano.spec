@@ -5,7 +5,7 @@
 %endif
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%bcond_with virtuoso 0
+%bcond_without virtuoso
 
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
@@ -17,7 +17,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.67
-Release: %mkrel 0.%svn.2
+Release: %mkrel 0.%svn.3
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -250,7 +250,7 @@ Requires: java-rpmbuild
 %endif
 Requires: %{name}-plugin-redland
 %if %with virtuoso
-Requires: %name-virtuoso
+Requires: %name-plugin-virtuoso
 %endif
 
 %description devel
