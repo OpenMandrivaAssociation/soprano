@@ -12,18 +12,17 @@
 %define _requires_exceptions libjvm\.so
 %endif
 
-%define svn 1044611
+%define svn 1053357
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.67
-Release: %mkrel 0.%svn.5
+Release: %mkrel 0.%svn.6
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
 Source: soprano-%version.%svn.tar.bz2
-Patch1:    soprano-2.3.67-fix-virtuoso-detection.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -274,7 +273,6 @@ applications which will use %{name}.
 
 %prep
 %setup -q -n %name
-%patch1 -p0
 
 %build
 %if %with_java
