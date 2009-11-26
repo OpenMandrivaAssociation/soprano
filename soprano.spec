@@ -5,8 +5,6 @@
 %endif
 %{?_with_java: %{expand: %%global with_java 1}}
 
-%bcond_without virtuoso
-
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
 %define _requires_exceptions libjvm\.so
@@ -32,16 +30,9 @@ BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
 BuildRequires: chrpath
-Suggests: soprano-plugin-sesame2
-%endif
 BuildRequires: doxygen
-Suggests: soprano-plugin-redland
-%if %with virtuoso
 BuildRequires: iodbc-devel
-Suggests: soprano-plugin-virtuoso
-%else 
-Obsoletes: soprano-plugin-virtuoso
-%endif
+Requires: soprano-plugin-virtuoso
 
 
 %description
@@ -83,7 +74,6 @@ This package provide the sesame2 java indexer plugin for soprano.
 %endif
 
 #---------------------------------------------------------------------------------
-%if %with virtuoso
 
 %package    plugin-virtuoso
 Summary:    Virtuoso soprano plugin
@@ -101,7 +91,6 @@ This package provide the virtuoso plugin for soprano.
 %dir %_libdir/soprano
 %_libdir/soprano/libsoprano_virtuosobackend.so
 
-%endif
 #---------------------------------------------------------------------------------
 
 %package    plugin-redland
@@ -249,9 +238,7 @@ Requires: java-devel
 Requires: java-rpmbuild
 %endif
 Requires: %{name}-plugin-redland
-%if %with virtuoso
 Requires: %{name}-plugin-virtuoso
-%endif
 
 %description devel
 This package contains the headers that programmers will need to develop
