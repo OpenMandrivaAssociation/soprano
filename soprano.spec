@@ -30,6 +30,7 @@ BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
 BuildRequires: chrpath
+%endif
 BuildRequires: doxygen
 BuildRequires: iodbc-devel
 
