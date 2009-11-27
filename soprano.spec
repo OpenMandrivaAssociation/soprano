@@ -15,7 +15,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.3.67
-Release: %mkrel 0.%svn.8
+Release: %mkrel 0.%svn.9
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -98,6 +98,7 @@ This package provide the virtuoso plugin for soprano.
 Summary:    redland soprano plugin
 Group:      System/Libraries
 Requires:   soprano-plugin-common
+Requires:   %{_lib}rasqal1
 
 %description plugin-redland
 This package provide the redland indexer plugin for soprano.
@@ -234,6 +235,7 @@ Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
 Requires: soprano
 Requires: %{name}-plugin-virtuoso
+Requires: %{name}-plugin-redland
 
 %description devel
 This package contains the headers that programmers will need to develop
