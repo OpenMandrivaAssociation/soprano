@@ -10,12 +10,12 @@
 %define _requires_exceptions libjvm\.so
 %endif
 
-%define svn 1053357
+%define svn 1056639
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.3.67
-Release: %mkrel 0.%svn.9
+Version: 2.3.70
+Release: %mkrel 0.%svn.1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
