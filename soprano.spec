@@ -20,7 +20,7 @@ Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-Source: soprano-%version.%svn.tar.bz2
+Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%version.%svn.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
