@@ -247,7 +247,7 @@ applications which will use %{name}.
 %_includedir/soprano/*
 %dir %_includedir/Soprano/
 %_includedir/Soprano/*
-%_libdir/pkgconfig/soprano.pc
+%_libdir/pkgconfig/*.pc
 %_libdir/*.so
 %_datadir/dbus-1/interfaces/*
 %_datadir/soprano/cmake
