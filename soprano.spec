@@ -16,13 +16,13 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.4.63
-Release: %mkrel 0.%svn.1
+Version: 2.4.64
+Release: %mkrel 1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%version.%svn.tar.bz2
+Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%version.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -257,7 +257,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 
 %build
 %if %with_java
