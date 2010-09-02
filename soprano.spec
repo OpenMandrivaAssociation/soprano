@@ -155,7 +155,8 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%define libsopranoclient %mklibname sopranoclient 1
+%define sopranoclient_major 1
+%define libsopranoclient %mklibname sopranoclient %sopranoclient_major
 
 %package -n %libsopranoclient
 Summary: Library for %name
@@ -174,12 +175,12 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoclient
 %defattr(-,root,root)
-%_libdir/libsopranoclient.so.1
-%_libdir/libsopranoclient.so.1.*
+%_libdir/libsopranoclient.so.%{sopranoclient_major}*
 
 #---------------------------------------------------------------------------------
 
-%define libsopranoserver %mklibname sopranoserver 1
+%define sopranoserver_major 1
+%define libsopranoserver %mklibname sopranoserver %{sopranoserver_major}
 
 %package -n %libsopranoserver
 Summary: Library for %name
@@ -198,12 +199,12 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoserver
 %defattr(-,root,root)
-%_libdir/libsopranoserver.so.1
-%_libdir/libsopranoserver.so.1.*
+%_libdir/libsopranoserver.so.%{sopranoserver_major}*
 
 #---------------------------------------------------------------------------------
 
-%define libsopranoindex %mklibname sopranoindex 1
+%define sopranoindex_major 1
+%define libsopranoindex %mklibname sopranoindex %{sopranoindex_major}
 
 %package -n %libsopranoindex
 Summary: Library for %name
@@ -222,8 +223,7 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoindex
 %defattr(-,root,root)
-%_libdir/libsopranoindex.so.1
-%_libdir/libsopranoindex.so.1.*
+%_libdir/libsopranoindex.so.%{sopranoindex_major}*
 
 #---------------------------------------------------------------------------------
 
