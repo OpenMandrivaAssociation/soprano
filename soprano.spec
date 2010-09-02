@@ -1,4 +1,4 @@
-%define svn 1132031
+%define svn 1170808
 
 %ifarch %arm %mips
 %define with_java 0
@@ -16,13 +16,13 @@
 
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.5.0
-Release: %mkrel 1
+Version: 2.5.62
+Release: %mkrel -c %svn 1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%version.tar.bz2
+Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}svn%{svn}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -36,7 +36,7 @@ BuildRequires: chrpath
 BuildRequires: doxygen
 BuildRequires: iodbc-devel
 
-Requires: soprano-plugin-virtuoso
+Requires: soprano-plugin-virtuoso = %{epoch}:%version
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -61,7 +61,7 @@ applications not aware of Nepomuk services.
 %package    plugin-sesame2
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
-Requires:   soprano-plugin-common
+Requires:   soprano-plugin-common = %{epoch}:%version
 Requires:   java
 
 %description plugin-sesame2
@@ -82,7 +82,7 @@ This package provide the sesame2 java indexer plugin for soprano.
 Summary:    Virtuoso soprano plugin
 Group:      System/Libraries
 Requires:   virtuoso-opensource >= 5.0.12
-Requires:   soprano-plugin-common
+Requires:   soprano-plugin-common = %{epoch}:%version
 
 %description plugin-virtuoso
 This package provide the virtuoso plugin for soprano.
@@ -99,7 +99,7 @@ This package provide the virtuoso plugin for soprano.
 %package    plugin-redland
 Summary:    redland soprano plugin
 Group:      System/Libraries
-Requires:   soprano-plugin-common
+Requires:   soprano-plugin-common = %{epoch}:%version
 
 %description plugin-redland
 This package provide the redland indexer plugin for soprano.
@@ -137,7 +137,7 @@ Common parser and serializers
 %package -n %libsoprano
 Summary:    Library for %name
 Group:      Development/C
-Requires:   %name
+Requires:   %name = %{epoch}:%version
 
 %description -n %libsoprano
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -160,7 +160,7 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoclient
 Summary: Library for %name
 Group: Development/C
-Requires: %name
+Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoclient
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -174,7 +174,8 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoclient
 %defattr(-,root,root)
-%_libdir/libsopranoclient.so.*
+%_libdir/libsopranoclient.so.1
+%_libdir/libsopranoclient.so.1.*
 
 #---------------------------------------------------------------------------------
 
@@ -183,7 +184,7 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoserver
 Summary: Library for %name
 Group: Development/C
-Requires: %name
+Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoserver
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -197,7 +198,8 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoserver
 %defattr(-,root,root)
-%_libdir/libsopranoserver.so.*
+%_libdir/libsopranoserver.so.1
+%_libdir/libsopranoserver.so.1.*
 
 #---------------------------------------------------------------------------------
 
@@ -206,7 +208,7 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoindex
 Summary: Library for %name
 Group: Development/C
-Requires: %name
+Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoindex
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -220,23 +222,24 @@ applications not aware of Nepomuk services.
 
 %files -n %libsopranoindex
 %defattr(-,root,root)
-%_libdir/libsopranoindex.so.*
+%_libdir/libsopranoindex.so.1
+%_libdir/libsopranoindex.so.1.*
 
 #---------------------------------------------------------------------------------
 
 %package  devel
 Summary:  Library
 Group:    Development/C
-Provides: libsoprano-devel = %{epoch}:%version-release
+Provides: libsoprano-devel = %{epoch}:%version-%release
 Requires: %libsoprano = %{epoch}:%version-%release
 Obsoletes:%libsoprano-devel < 3:3.0-0.714066.1
 Requires: %libsoprano = %{epoch}:%version-%release
 Requires: %libsopranoclient = %{epoch}:%version-%release
 Requires: %libsopranoserver = %{epoch}:%version-%release
 Requires: %libsopranoindex = %{epoch}:%version-%release
-Requires: soprano
-Requires: %{name}-plugin-virtuoso
-Requires: %{name}-plugin-redland
+Requires: soprano = %{epoch}:%version-%release
+Requires: %{name}-plugin-virtuoso = %{epoch}:%version-%release
+Requires: %{name}-plugin-redland = %{epoch}:%version-%release
 
 %description devel
 This package contains the headers that programmers will need to develop
