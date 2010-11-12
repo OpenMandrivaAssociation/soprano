@@ -1,4 +1,4 @@
-%define svn 1170808
+%define git git20101104
 
 %ifarch %arm %mips
 %define with_java 0
@@ -12,17 +12,15 @@
 %define _requires_exceptions libjvm\.so
 %endif
 
-#define svn 1070828
-
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.5.62
-Release: %mkrel -c %svn 1
+Version: 2.5.63
+Release: %mkrel -c %git 1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}svn%{svn}.tar.bz2
+Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}%{git}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -268,7 +266,6 @@ export JAVA_HOME=%{java_home}
 %endif
 
 %cmake_qt4
-
 %make
 
 
