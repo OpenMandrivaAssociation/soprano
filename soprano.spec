@@ -20,7 +20,6 @@ License: LGPLv2+
 URL: http://soprano.sourceforge.net
 Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
 Patch0: soprano-2.6.0-raptor2.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
 BuildRequires: raptor-devel
