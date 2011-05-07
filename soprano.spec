@@ -34,7 +34,7 @@ BuildRequires: chrpath
 BuildRequires: doxygen
 BuildRequires: iodbc-devel
 
-Requires: soprano-plugin-virtuoso = %{EVRD0
+Requires: soprano-plugin-virtuoso = %{EVRD}
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
