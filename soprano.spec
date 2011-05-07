@@ -47,7 +47,6 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files
-%defattr(-,root,root)
 %_bindir/sopranocmd
 %_bindir/sopranod
 %dir %_datadir/soprano
@@ -86,7 +85,6 @@ Requires:   soprano-plugin-common = %{EVRD}
 This package provide the virtuoso plugin for soprano.
 
 %files plugin-virtuoso
-%defattr(-,root,root)
 %dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/virtuosobackend.desktop
 %dir %_libdir/soprano
@@ -119,7 +117,6 @@ Group:      System/Libraries
 Common parser and serializers
 
 %files plugin-common
-%defattr(-,root,root)
 %dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/*parser.desktop
 %_datadir/soprano/plugins/*serializer.desktop
@@ -170,7 +167,6 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files -n %libsopranoclient
-%defattr(-,root,root)
 %_libdir/libsopranoclient.so.%{sopranoclient_major}*
 
 #---------------------------------------------------------------------------------
@@ -193,7 +189,6 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files -n %libsopranoserver
-%defattr(-,root,root)
 %_libdir/libsopranoserver.so.%{sopranoserver_major}*
 
 #---------------------------------------------------------------------------------
@@ -240,7 +235,6 @@ This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
 %files devel
-%defattr(-,root,root)
 %_bindir/onto2vocabularyclass
 %dir %_includedir/soprano/
 %_includedir/soprano/*
@@ -265,9 +259,7 @@ export JAVA_HOME=%{java_home}
 %cmake_qt4
 %make
 
-
 %install
-rm -rf %buildroot
 %makeinstall_std -C build
 
 %if %with_java
@@ -278,7 +270,3 @@ old_rpath=$(chrpath -l %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.
 new_rpath=$(echo "$old_rpath" | sed "s,%{java_home},%{_jvmdir},")
 chrpath -r "$new_rpath" %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
 %endif
-
-%clean 
-rm -rf %buildroot
-
