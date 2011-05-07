@@ -13,7 +13,7 @@
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
 Version: 2.6.0
-Release: %mkrel 2
+Release: 3
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
@@ -135,7 +135,6 @@ Common parser and serializers
 %package -n %libsoprano
 Summary:    Library for %name
 Group:      Development/C
-Requires:   %name = %{epoch}:%version
 
 %description -n %libsoprano
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -159,7 +158,6 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoclient
 Summary: Library for %name
 Group: Development/C
-Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoclient
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -183,7 +181,6 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoserver
 Summary: Library for %name
 Group: Development/C
-Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoserver
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -207,7 +204,6 @@ applications not aware of Nepomuk services.
 %package -n %libsopranoindex
 Summary: Library for %name
 Group: Development/C
-Requires: %name = %{epoch}:%version
 
 %description -n %libsopranoindex
 Soprano (formally known as QRDF) is a library which provides a nice QT
