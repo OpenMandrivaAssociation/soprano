@@ -65,7 +65,6 @@ Requires:   java
 This package provide the sesame2 java indexer plugin for soprano.
 
 %files plugin-sesame2
-%defattr(-,root,root)
 %dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/sesame2backend.desktop
 %_datadir/soprano/sesame2
@@ -101,7 +100,6 @@ Requires:   soprano-plugin-common = %{EVRD}
 This package provide the redland indexer plugin for soprano.
 
 %files plugin-redland
-%defattr(-,root,root)
 %dir %_datadir/soprano/plugins
 %_datadir/soprano/plugins/redlandbackend.desktop
 %dir %_libdir/soprano
@@ -144,7 +142,6 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files -n %libsoprano
-%defattr(-,root,root)
 %_libdir/libsoprano.so.%{libsopranomajor}*
 
 #---------------------------------------------------------------------------------
@@ -211,7 +208,6 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files -n %libsopranoindex
-%defattr(-,root,root)
 %_libdir/libsopranoindex.so.%{sopranoindex_major}*
 
 #---------------------------------------------------------------------------------
