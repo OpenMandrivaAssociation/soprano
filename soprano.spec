@@ -10,15 +10,17 @@
 %define _requires_exceptions libjvm\.so
 %endif
 
+%define date 20110606
+
 Name: soprano
 Summary: Library which provides a nice QT interface to RDF
-Version: 2.6.0
-Release: 3
+Version: 2.6.51
+Release: 0.%date.1
 Epoch: 4
 Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
-Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
+Source: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.%date.tar.bz2
 Patch0: soprano-2.6.0-raptor2.patch
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
@@ -243,7 +245,7 @@ applications which will use %{name}.
 #---------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name
 %patch0 -p0 -b .raptor2
 
 %build
