@@ -23,7 +23,6 @@ BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
 BuildRequires: raptor-devel
 BuildRequires: qt4-devel >= 4.4.0
-BuildRequires: clucene-devel >= 0.9.19
 BuildRequires: kde4-macros
 %if %with_java
 BuildRequires: java-rpmbuild
