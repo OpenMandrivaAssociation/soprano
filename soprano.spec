@@ -187,28 +187,6 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%define sopranoindex_major 1
-%define libsopranoindex %mklibname sopranoindex %{sopranoindex_major}
-
-%package -n %libsopranoindex
-Summary: Library for %name
-Group: Development/C
-
-%description -n %libsopranoindex
-Soprano (formally known as QRDF) is a library which provides a nice QT
-interface to RDF storage solutions.  It has a modular structure which allows to
-replace the actual RDF storage implementation used.  Currently two
-implementations are working.  The first and most important backend used in
-Soprano is based on librdf, the Redland RDF Application Framework.  The second
-backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
-to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
-applications not aware of Nepomuk services.
-
-%files -n %libsopranoindex
-%_libdir/libsopranoindex.so.%{sopranoindex_major}*
-
-#---------------------------------------------------------------------------------
-
 %package  devel
 Summary:  Library
 Group:    Development/C
@@ -218,7 +196,6 @@ Obsoletes:%libsoprano-devel < 3:3.0-0.714066.1
 Requires: %libsoprano = %{EVRD}
 Requires: %libsopranoclient = %{EVRD}
 Requires: %libsopranoserver = %{EVRD}
-Requires: %libsopranoindex = %{EVRD}
 Requires: soprano = %{EVRD}
 Requires: %{name}-plugin-virtuoso = %{EVRD}
 Requires: %{name}-plugin-redland = %{EVRD}
