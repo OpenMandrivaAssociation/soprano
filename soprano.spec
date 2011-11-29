@@ -1,11 +1,10 @@
 %ifarch %arm %mips
-%define with_java 0
+%bcond with java
 %else
-%define with_java 1
+%bcond without java
 %endif
-%{?_with_java: %{expand: %%global with_java 1}}
 
-%if %{with_java}
+%if %{with java}
 # Do not require java stuff just because we have a java backend
 %define _requires_exceptions libjvm\.so
 %endif
@@ -24,7 +23,7 @@ BuildRequires: redland-devel >= 1.0.6
 BuildRequires: raptor-devel
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: kde4-macros
-%if %with_java
+%if %{with java}
 BuildRequires: java-rpmbuild
 BuildRequires: chrpath
 %endif
@@ -51,7 +50,7 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%if %with_java
+%if %{with java}
 %package    plugin-sesame2
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
@@ -221,7 +220,7 @@ applications which will use %{name}.
 %setup -q 
 
 %build
-%if %with_java
+%if %{with java}
 export JAVA_HOME=%{java_home}
 %endif
 
@@ -231,7 +230,7 @@ export JAVA_HOME=%{java_home}
 %install
 %makeinstall_std -C build
 
-%if %with_java
+%if %{with java}
 # Load libjvm.so from the JRE directory instead of SDK directory. This
 # works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
 # directories. Maybe there should be an alternative pointing to libjvm.so.
