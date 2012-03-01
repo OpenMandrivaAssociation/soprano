@@ -1,10 +1,12 @@
 %ifarch %arm %mips
-%bcond with java
+%define with_java 0
 %else
-%bcond without java
+%define with_java 1
 %endif
 
-%if %{with java}
+%{?_with_java: %{expand: %%global with_java 1}}
+
+%if %{with_java}
 # Do not require java stuff just because we have a java backend
 %define _requires_exceptions libjvm\.so
 %endif
@@ -18,13 +20,13 @@ Group: System/Libraries
 License: LGPLv2+
 URL: http://soprano.sourceforge.net
 Source0: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
-Patch0:  soprano_2.7_clientconnection_cpp.patc
+Patch0:  soprano_2.7_clientconnection_cpp.patch
 BuildRequires: cmake >= 2.6.2
 BuildRequires: redland-devel >= 1.0.6
 BuildRequires: raptor-devel
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: kde4-macros
-%if %{with java}
+%if %{with_java}
 BuildRequires: java-rpmbuild
 BuildRequires: chrpath
 %endif
@@ -51,7 +53,7 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%if %{with java}
+%if %{with_java}
 %package    plugin-sesame2
 Summary:    Sesame2 soprano plugin
 Group:      System/Libraries
@@ -222,7 +224,7 @@ applications which will use %{name}.
 %apply_patches
 
 %build
-%if %{with java}
+%if %{with_java}
 export JAVA_HOME=%{java_home}
 %endif
 
@@ -232,7 +234,7 @@ export JAVA_HOME=%{java_home}
 %install
 %makeinstall_std -C build
 
-%if %{with java}
+%if %{with_java}
 # Load libjvm.so from the JRE directory instead of SDK directory. This
 # works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
 # directories. Maybe there should be an alternative pointing to libjvm.so.
