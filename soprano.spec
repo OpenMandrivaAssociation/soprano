@@ -3,7 +3,6 @@
 %else
 %define with_java 1
 %endif
-
 %{?_with_java: %{expand: %%global with_java 1}}
 
 %if %{with_java}
@@ -11,29 +10,30 @@
 %define _requires_exceptions libjvm\.so
 %endif
 
-Name: soprano
-Summary: Library which provides a nice QT interface to RDF
-Version: 2.7.5
-Release: 1
-Epoch: 4
-Group: System/Libraries
-License: LGPLv2+
-URL: http://soprano.sourceforge.net
-Source0: http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
-Patch0:  soprano_2.7_clientconnection_cpp.patch
-BuildRequires: cmake >= 2.6.2
-BuildRequires: redland-devel >= 1.0.6
-BuildRequires: raptor-devel
-BuildRequires: qt4-devel >= 4.4.0
-BuildRequires: kde4-macros
+Name:		soprano
+Summary:	Library which provides a nice QT interface to RDF
+Version:	2.7.57
+Release:	1
+Epoch:		4
+Group:		System/Libraries
+License:	LGPLv2+
+URL:		http://soprano.sourceforge.net
+Source:		http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		soprano-2.6.0-raptor2.patch
+BuildRequires:	cmake >= 2.6.2
+BuildRequires:	redland-devel >= 1.0.6
+BuildRequires:	raptor-devel
+BuildRequires:	qt4-devel >= 4.4.0
+BuildRequires:	clucene-devel >= 0.9.19
+BuildRequires:	kde4-macros
 %if %{with_java}
-BuildRequires: java-rpmbuild
-BuildRequires: chrpath
+BuildRequires:	java-rpmbuild
+BuildRequires:	chrpath
 %endif
-BuildRequires: doxygen
-BuildRequires: iodbc-devel
+BuildRequires:	doxygen
+BuildRequires:	iodbc-devel
 
-Requires: soprano-plugin-virtuoso = %{EVRD}
+Requires:	soprano-plugin-virtuoso = %{EVRD}
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -46,91 +46,91 @@ to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
 %files
-%_bindir/sopranocmd
-%_bindir/sopranod
-%dir %_datadir/soprano
-%_datadir/soprano/rules
+%{_bindir}/sopranocmd
+%{_bindir}/sopranod
+%dir %{_datadir}/soprano
+%{_datadir}/soprano/rules
 
 #---------------------------------------------------------------------------------
 
 %if %{with_java}
-%package    plugin-sesame2
-Summary:    Sesame2 soprano plugin
-Group:      System/Libraries
-Requires:   soprano-plugin-common = %{EVRD}
-Requires:   java
+%package plugin-sesame2
+Summary:	Sesame2 soprano plugin
+Group:		System/Libraries
+Requires:	soprano-plugin-common = %{EVRD}
+Requires:	java
 
 %description plugin-sesame2
 This package provide the sesame2 java indexer plugin for soprano.
 
 %files plugin-sesame2
-%dir %_datadir/soprano/plugins
-%_datadir/soprano/plugins/sesame2backend.desktop
-%_datadir/soprano/sesame2
-%dir %_libdir/soprano
-%_libdir/soprano/libsoprano_sesame2backend.so
+%dir %{_datadir}/soprano/plugins
+%{_datadir}/soprano/plugins/sesame2backend.desktop
+%{_datadir}/soprano/sesame2
+%dir %{_libdir}/soprano
+%{_libdir}/soprano/libsoprano_sesame2backend.so
 %endif
 
 #---------------------------------------------------------------------------------
 
-%package    plugin-virtuoso
-Summary:    Virtuoso soprano plugin
-Group:      System/Libraries
-Requires:   virtuoso-opensource >= 5.0.12
-Requires:   soprano-plugin-common = %{EVRD}
+%package plugin-virtuoso
+Summary:	Virtuoso soprano plugin
+Group:		System/Libraries
+Requires:	virtuoso-opensource >= 5.0.12
+Requires:	soprano-plugin-common = %{EVRD}
 
 %description plugin-virtuoso
 This package provide the virtuoso plugin for soprano.
 
 %files plugin-virtuoso
-%dir %_datadir/soprano/plugins
-%_datadir/soprano/plugins/virtuosobackend.desktop
-%dir %_libdir/soprano
-%_libdir/soprano/libsoprano_virtuosobackend.so
+%dir %{_datadir}/soprano/plugins
+%{_datadir}/soprano/plugins/virtuosobackend.desktop
+%dir %{_libdir}/soprano
+%{_libdir}/soprano/libsoprano_virtuosobackend.so
 
 #---------------------------------------------------------------------------------
 
-%package    plugin-redland
-Summary:    redland soprano plugin
-Group:      System/Libraries
-Requires:   soprano-plugin-common = %{EVRD}
+%package plugin-redland
+Summary:	redland soprano plugin
+Group:		System/Libraries
+Requires:	soprano-plugin-common = %{EVRD}
 
 %description plugin-redland
 This package provide the redland indexer plugin for soprano.
 
 %files plugin-redland
-%dir %_datadir/soprano/plugins
-%_datadir/soprano/plugins/redlandbackend.desktop
-%dir %_libdir/soprano
-%_libdir/soprano/libsoprano_redlandbackend.so
+%dir %{_datadir}/soprano/plugins
+%{_datadir}/soprano/plugins/redlandbackend.desktop
+%dir %{_libdir}/soprano
+%{_libdir}/soprano/libsoprano_redlandbackend.so
 
 #---------------------------------------------------------------------------------
 
-%package    plugin-common
-Summary:    Common parsers and serializers
-Group:      System/Libraries
+%package plugin-common
+Summary:	Common parsers and serializers
+Group:		System/Libraries
 
 %description plugin-common
 Common parser and serializers
 
 %files plugin-common
-%dir %_datadir/soprano/plugins
-%_datadir/soprano/plugins/*parser.desktop
-%_datadir/soprano/plugins/*serializer.desktop
-%dir %_libdir/soprano
-%_libdir/soprano/libsoprano_*serializer.so
-%_libdir/soprano/libsoprano_*parser.so
+%dir %{_datadir}/soprano/plugins
+%{_datadir}/soprano/plugins/*parser.desktop
+%{_datadir}/soprano/plugins/*serializer.desktop
+%dir %{_libdir}/soprano
+%{_libdir}/soprano/libsoprano_*serializer.so
+%{_libdir}/soprano/libsoprano_*parser.so
 
 #---------------------------------------------------------------------------------
 
 %define libsopranomajor 4
-%define libsoprano %mklibname soprano %libsopranomajor
+%define libsoprano %mklibname soprano %{libsopranomajor}
 
-%package -n %libsoprano
-Summary:    Library for %name
-Group:      Development/C
+%package -n %{libsoprano}
+Summary:	Library for %{name}
+Group:		Development/C
 
-%description -n %libsoprano
+%description -n %{libsoprano}
 Soprano (formally known as QRDF) is a library which provides a nice QT
 interface to RDF storage solutions.  It has a modular structure which allows to
 replace the actual RDF storage implementation used.  Currently two
@@ -140,19 +140,19 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%files -n %libsoprano
-%_libdir/libsoprano.so.%{libsopranomajor}*
+%files -n %{libsoprano}
+%{_libdir}/libsoprano.so.%{libsopranomajor}*
 
 #---------------------------------------------------------------------------------
 
 %define sopranoclient_major 1
-%define libsopranoclient %mklibname sopranoclient %sopranoclient_major
+%define libsopranoclient %mklibname sopranoclient %{sopranoclient_major}
 
-%package -n %libsopranoclient
-Summary: Library for %name
-Group: Development/C
+%package -n %{libsopranoclient}
+Summary:	Library for %{name}
+Group:		Development/C
 
-%description -n %libsopranoclient
+%description -n %{libsopranoclient}
 Soprano (formally known as QRDF) is a library which provides a nice QT
 interface to RDF storage solutions.  It has a modular structure which allows to
 replace the actual RDF storage implementation used.  Currently two
@@ -162,19 +162,19 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%files -n %libsopranoclient
-%_libdir/libsopranoclient.so.%{sopranoclient_major}*
+%files -n %{libsopranoclient}
+%{_libdir}/libsopranoclient.so.%{sopranoclient_major}*
 
 #---------------------------------------------------------------------------------
 
 %define sopranoserver_major 1
 %define libsopranoserver %mklibname sopranoserver %{sopranoserver_major}
 
-%package -n %libsopranoserver
-Summary: Library for %name
-Group: Development/C
+%package -n %{libsopranoserver}
+Summary:	Library for %{name}
+Group:		Development/C
 
-%description -n %libsopranoserver
+%description -n %{libsopranoserver}
 Soprano (formally known as QRDF) is a library which provides a nice QT
 interface to RDF storage solutions.  It has a modular structure which allows to
 replace the actual RDF storage implementation used.  Currently two
@@ -184,44 +184,67 @@ backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
 to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
 applications not aware of Nepomuk services.
 
-%files -n %libsopranoserver
-%_libdir/libsopranoserver.so.%{sopranoserver_major}*
+%files -n %{libsopranoserver}
+%{_libdir}/libsopranoserver.so.%{sopranoserver_major}*
 
 #---------------------------------------------------------------------------------
 
-%package  devel
-Summary:  Library
-Group:    Development/C
-Provides: libsoprano-devel = %{EVRD}
-Requires: %libsoprano = %{EVRD}
-Obsoletes:%libsoprano-devel < 3:3.0-0.714066.1
-Requires: %libsoprano = %{EVRD}
-Requires: %libsopranoclient = %{EVRD}
-Requires: %libsopranoserver = %{EVRD}
-Requires: soprano = %{EVRD}
-Requires: %{name}-plugin-virtuoso = %{EVRD}
-Requires: %{name}-plugin-redland = %{EVRD}
+%define sopranoindex_major 1
+%define libsopranoindex %mklibname sopranoindex %{sopranoindex_major}
+
+%package -n %{libsopranoindex}
+Summary:	Library for %{name}
+Group:		Development/C
+
+%description -n %{libsopranoindex}
+Soprano (formally known as QRDF) is a library which provides a nice QT
+interface to RDF storage solutions.  It has a modular structure which allows to
+replace the actual RDF storage implementation used.  Currently two
+implementations are working.  The first and most important backend used in
+Soprano is based on librdf, the Redland RDF Application Framework.  The second
+backend is the more interesting one as it uses the NEPOMUK-KDE backbone library
+to connect to a NEPOMUK RDF triple service, thus providing a nice interface for
+applications not aware of Nepomuk services.
+
+%files -n %{libsopranoindex}
+%{_libdir}/libsopranoindex.so.%{sopranoindex_major}*
+
+#---------------------------------------------------------------------------------
+
+%package devel
+Summary:	Library
+Group:		Development/C
+Provides:	libsoprano-devel = %{EVRD}
+Requires:	%{libsoprano} = %{EVRD}
+Obsoletes:	%{libsoprano}-devel < 3:3.0-0.714066.1
+Requires:	%{libsoprano} = %{EVRD}
+Requires:	%{libsopranoclient} = %{EVRD}
+Requires:	%{libsopranoserver} = %{EVRD}
+Requires:	%{libsopranoindex} = %{EVRD}
+Requires:	soprano = %{EVRD}
+Requires:	%{name}-plugin-virtuoso = %{EVRD}
+Requires:	%{name}-plugin-redland = %{EVRD}
 
 %description devel
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
 %files devel
-%_bindir/onto2vocabularyclass
-%dir %_includedir/soprano/
-%_includedir/soprano/*
-%dir %_includedir/Soprano/
-%_includedir/Soprano/*
-%_libdir/pkgconfig/*.pc
-%_libdir/*.so
-%_datadir/dbus-1/interfaces/*
-%_datadir/soprano/cmake
+%{_bindir}/onto2vocabularyclass
+%dir %{_includedir}/soprano/
+%{_includedir}/soprano/*
+%dir %{_includedir}/Soprano/
+%{_includedir}/Soprano/*
+%{_libdir}/pkgconfig/*.pc
+%{_libdir}/*.so
+%{_datadir}/dbus-1/interfaces/*
+%{_datadir}/soprano/cmake
 
 #---------------------------------------------------------------------------------
 
 %prep
-%setup -q 
-%apply_patches
+%setup -q
+%patch0 -p0 -b .raptor2
 
 %build
 %if %{with_java}
@@ -242,3 +265,4 @@ old_rpath=$(chrpath -l %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.
 new_rpath=$(echo "$old_rpath" | sed "s,%{java_home},%{_jvmdir},")
 chrpath -r "$new_rpath" %{buildroot}%{_libdir}/soprano/libsoprano_sesame2backend.so
 %endif
+
