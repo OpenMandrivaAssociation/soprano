@@ -11,6 +11,8 @@
 %define _noautoreq 'libjvm.so'
 %endif
 
+%define with_clucene 0
+
 Name:		soprano
 Summary:	Library which provides a nice QT interface to RDF
 Version:	2.8.0
@@ -32,6 +34,12 @@ BuildRequires:	kde4-macros
 %if %{with_java}
 BuildRequires:	java-rpmbuild
 BuildRequires:	chrpath
+%endif
+%if %{with_clucene}
+BuildRequires:	clucene-devel
+%else
+BuildConflicts:	clucene-devel
+Obsoletes:	%{mklibname sopranoindex 1} < %{EVRD}
 %endif
 BuildRequires:	doxygen
 Requires:	soprano-plugin-virtuoso = %{EVRD}
@@ -190,6 +198,7 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
+%if %{with_clucene}
 %define sopranoindex_major 1
 %define libsopranoindex %mklibname sopranoindex %{sopranoindex_major}
 
@@ -209,6 +218,7 @@ applications not aware of Nepomuk services.
 
 %files -n %{libsopranoindex}
 %{_libdir}/libsopranoindex.so.%{sopranoindex_major}*
+%endif
 
 #---------------------------------------------------------------------------------
 
@@ -221,7 +231,9 @@ Obsoletes:	%{libsoprano}-devel < 3:3.0-0.714066.1
 Requires:	%{libsoprano} = %{EVRD}
 Requires:	%{libsopranoclient} = %{EVRD}
 Requires:	%{libsopranoserver} = %{EVRD}
+%if %{with_clucene}
 Requires:	%{libsopranoindex} = %{EVRD}
+%endif
 Requires:	soprano = %{EVRD}
 Requires:	%{name}-plugin-virtuoso = %{EVRD}
 Requires:	%{name}-plugin-redland = %{EVRD}
