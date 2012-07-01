@@ -8,31 +8,32 @@
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
 %define _requires_exceptions libjvm\.so
+%define _noautoreq 'libjvm.so'
 %endif
 
 Name:		soprano
 Summary:	Library which provides a nice QT interface to RDF
-Version:	2.7.57
+Version:	2.8.0
 Release:	1
 Epoch:		4
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://soprano.sourceforge.net
 Source:		http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		soprano-2.6.0-raptor2.patch
 BuildRequires:	cmake >= 2.6.2
-BuildRequires:	redland-devel >= 1.0.6
-BuildRequires:	raptor-devel
-BuildRequires:	qt4-devel >= 4.4.0
-BuildRequires:	clucene-devel >= 0.9.19
+BuildRequires:	pkgconfig(redland) >= 1.0.6
+BuildRequires:	pkgconfig(raptor2)
+BuildRequires:	pkgconfig(libiodbc)
+BuildRequires:	pkgconfig(QtCore)
+BuildRequires:	pkgconfig(QtNetwork)
+BuildRequires:	pkgconfig(QtXml)
+BuildRequires:	pkgconfig(QtDBus)
 BuildRequires:	kde4-macros
 %if %{with_java}
 BuildRequires:	java-rpmbuild
 BuildRequires:	chrpath
 %endif
 BuildRequires:	doxygen
-BuildRequires:	iodbc-devel
-
 Requires:	soprano-plugin-virtuoso = %{EVRD}
 
 %description
@@ -244,7 +245,6 @@ applications which will use %{name}.
 
 %prep
 %setup -q
-%patch0 -p0 -b .raptor2
 
 %build
 %if %{with_java}
