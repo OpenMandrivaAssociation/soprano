@@ -7,8 +7,11 @@
 
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
-%define _requires_exceptions libjvm\.so
+%if %{_use_internal_dependency_generator}
 %define _noautoreq 'libjvm.so'
+%else
+%define _requires_exceptions libjvm\.so
+%endif
 %endif
 
 %define with_clucene 0
