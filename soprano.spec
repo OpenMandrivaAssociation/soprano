@@ -1,4 +1,4 @@
-%ifarch %arm %mips
+%ifarch %{arm} %{mips}
 %define with_java 0
 %else
 %define with_java 1
@@ -8,7 +8,7 @@
 %if %{with_java}
 # Do not require java stuff just because we have a java backend
 %if %{_use_internal_dependency_generator}
-%define _noautoreq 'libjvm.so'
+%define __noautoreq 'libjvm\\.so(.*)'
 %else
 %define _requires_exceptions libjvm\.so
 %endif
@@ -16,14 +16,14 @@
 
 %define with_clucene 0
 
-Name:		soprano
 Summary:	Library which provides a nice QT interface to RDF
-Version:	2.9.2
+Name:		soprano
+Version:	2.9.3
 Release:	1
 Epoch:		4
-Group:		System/Libraries
 License:	LGPLv2+
-URL:		http://soprano.sourceforge.net
+Group:		System/Libraries
+Url:		http://soprano.sourceforge.net
 Source:		http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	pkgconfig(redland) >= 1.0.6
