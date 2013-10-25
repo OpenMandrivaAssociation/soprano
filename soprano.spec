@@ -1,11 +1,10 @@
 %ifarch %{arm} %{mips}
-%define with_java 0
+%bcond_with java
 %else
-%define with_java 1
+%bcond_without java
 %endif
-%{?_with_java: %{expand: %%global with_java 1}}
 
-%if %{with_java}
+%if %{with java}
 # Do not require java stuff just because we have a java backend
 %if %{_use_internal_dependency_generator}
 %define __noautoreq 'libjvm\\.so(.*)'
@@ -14,11 +13,11 @@
 %endif
 %endif
 
-%define with_clucene 0
+%bcond_with clucene
 
 Summary:	Library which provides a nice QT interface to RDF
 Name:		soprano
-Version:	2.9.3
+Version:	2.9.4
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -34,11 +33,11 @@ BuildRequires:	pkgconfig(QtNetwork)
 BuildRequires:	pkgconfig(QtXml)
 BuildRequires:	pkgconfig(QtDBus)
 BuildRequires:	kde4-macros
-%if %{with_java}
+%if %{with java}
 BuildRequires:	java-rpmbuild
 BuildRequires:	chrpath
 %endif
-%if %{with_clucene}
+%if %{with clucene}
 BuildRequires:	clucene-devel
 %else
 BuildConflicts:	clucene-devel
@@ -65,7 +64,7 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%if %{with_java}
+%if %{with java}
 %package plugin-sesame2
 Summary:	Sesame2 soprano plugin
 Group:		System/Libraries
@@ -201,7 +200,7 @@ applications not aware of Nepomuk services.
 
 #---------------------------------------------------------------------------------
 
-%if %{with_clucene}
+%if %{with clucene}
 %define sopranoindex_major 1
 %define libsopranoindex %mklibname sopranoindex %{sopranoindex_major}
 
@@ -234,7 +233,7 @@ Obsoletes:	%{libsoprano}-devel < 3:3.0-0.714066.1
 Requires:	%{libsoprano} = %{EVRD}
 Requires:	%{libsopranoclient} = %{EVRD}
 Requires:	%{libsopranoserver} = %{EVRD}
-%if %{with_clucene}
+%if %{with clucene}
 Requires:	%{libsopranoindex} = %{EVRD}
 %endif
 Requires:	soprano = %{EVRD}
@@ -262,17 +261,21 @@ applications which will use %{name}.
 %setup -q
 
 %build
-%if %{with_java}
+%if %{with java}
 export JAVA_HOME=%{java_home}
 %endif
 
-%cmake_qt4
+%cmake_qt4 \
+%if !%{with clucene}
+	-DSOPRANO_DISABLE_CLUCENE_INDEX=True
+%endif
+
 %make
 
 %install
 %makeinstall_std -C build
 
-%if %{with_java}
+%if %{with java}
 # Load libjvm.so from the JRE directory instead of SDK directory. This
 # works with Sun-derived JREs, but GCJ/Jamvm etc have libjvm.so in different
 # directories. Maybe there should be an alternative pointing to libjvm.so.
