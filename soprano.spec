@@ -18,7 +18,7 @@
 Summary:	Library which provides a nice QT interface to RDF
 Name:		soprano
 Version:	2.9.4
-Release:	2
+Release:	3
 Epoch:		4
 License:	LGPLv2+
 Group:		System/Libraries
