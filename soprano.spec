@@ -18,12 +18,12 @@
 Summary:	Library which provides a nice QT interface to RDF
 Name:		soprano
 Version:	2.9.4
-Release:	5
+Release:	6
 Epoch:		4
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://soprano.sourceforge.net
-Source:		http://ovh.dl.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	pkgconfig(redland) >= 1.0.6
 BuildRequires:	pkgconfig(raptor2)
