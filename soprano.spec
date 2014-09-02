@@ -35,6 +35,7 @@ BuildRequires:	pkgconfig(QtDBus)
 BuildRequires:	kde4-macros
 %if %{with java}
 BuildRequires:	java-rpmbuild
+BuildRequires:	java-devel
 BuildRequires:	chrpath
 %endif
 %if %{with clucene}
