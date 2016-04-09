@@ -3,6 +3,7 @@
 %else
 %bcond_without java
 %endif
+%bcond_with virtuoso
 
 %if %{with java}
 # Do not require java stuff just because we have a java backend
@@ -18,7 +19,7 @@
 Summary:	Library which provides a nice QT interface to RDF
 Name:		soprano
 Version:	2.9.4
-Release:	15
+Release:	15.1
 Epoch:		4
 License:	LGPLv2+
 Group:		System/Libraries
@@ -44,7 +45,9 @@ BuildConflicts:	clucene-devel
 Obsoletes:	%{mklibname sopranoindex 1} < %{EVRD}
 %endif
 BuildRequires:	doxygen
+%if %{with virtuoso}
 Requires:	soprano-plugin-virtuoso = %{EVRD}
+%endif
 
 %description
 Soprano (formally known as QRDF) is a library which provides a nice QT
@@ -84,6 +87,7 @@ This package provide the sesame2 java indexer plugin for soprano.
 
 #---------------------------------------------------------------------------------
 
+%if %{with virtuoso}
 %package plugin-virtuoso
 Summary:	Virtuoso soprano plugin
 Group:		System/Libraries
@@ -98,6 +102,7 @@ This package provide the virtuoso plugin for soprano.
 %{_datadir}/soprano/plugins/virtuosobackend.desktop
 %dir %{_libdir}/soprano
 %{_libdir}/soprano/libsoprano_virtuosobackend.so
+%endif
 
 #---------------------------------------------------------------------------------
 
@@ -237,7 +242,9 @@ Requires:	%{libsopranoserver} = %{EVRD}
 Requires:	%{libsopranoindex} = %{EVRD}
 %endif
 Requires:	soprano = %{EVRD}
+%if %{with virtuoso}
 Requires:	%{name}-plugin-virtuoso = %{EVRD}
+%endif
 Requires:	%{name}-plugin-redland = %{EVRD}
 
 %description devel
@@ -267,7 +274,10 @@ export JAVA_HOME=%{java_home}
 
 %cmake_qt4 \
 %if !%{with clucene}
-	-DSOPRANO_DISABLE_CLUCENE_INDEX=True
+	-DSOPRANO_DISABLE_CLUCENE_INDEX=True \
+%endif
+%if !%{with virtuoso}
+	-DSOPRANO_DISABLE_VIRTUOSO_BACKEND:BOOL=ON
 %endif
 
 %make
