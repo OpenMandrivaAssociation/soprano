@@ -3,7 +3,11 @@
 %else
 %bcond_without java
 %endif
+%ifarch %{ix86} x86_64
+%bcond_without virtuoso
+%else
 %bcond_with virtuoso
+%endif
 
 %if %{with java}
 # Do not require java stuff just because we have a java backend
@@ -19,7 +23,7 @@
 Summary:	Library which provides a nice QT interface to RDF
 Name:		soprano
 Version:	2.9.4
-Release:	15.1
+Release:	16
 Epoch:		4
 License:	LGPLv2+
 Group:		System/Libraries
