@@ -3,7 +3,7 @@
 %else
 %bcond_without java
 %endif
-%ifarch %{ix86} x86_64
+%ifarch %{ix86} x86_64 aarch64
 %bcond_without virtuoso
 %else
 %bcond_with virtuoso
