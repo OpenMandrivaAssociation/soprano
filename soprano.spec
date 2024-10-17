@@ -27,7 +27,7 @@ Release:	18
 Epoch:		4
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://soprano.sourceforge.net
+Url:		https://soprano.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/soprano/Soprano/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	pkgconfig(redland) >= 1.0.6
